@@ -17,7 +17,6 @@ public class WalletController {
     @GetMapping("/getThemAll")
     public List<WalletDto> gettingAllWallet()
     {
-
         return walletService.getAllWallet();
     }
 
