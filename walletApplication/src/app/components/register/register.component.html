@@ -1,0 +1,91 @@
+<div class="container">
+  <h1>
+    <p>New Employee registration:</p>
+  </h1>
+  <form #userForm="ngForm">
+    <div class="row">
+      <div class="col-25">
+        <label for="walletId">Id:</label>
+      </div>
+      <div class="col-75">
+        <input type="number" [(ngModel)]="wallet.walletId" #idRef="ngModel" name="walletId" id="walletId" min=0
+               title="Enter positive id value" required>
+        <div *ngIf="idRef.invalid && (idRef.touched || idRef.dirty)">
+          <p *ngIf="idRef.errors?.['required']" class="text-danger">Id is required, cant be blank.</p>
+          <p *ngIf="idRef.errors?.['min']" class="text-danger">Id must be positive.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-25">
+        <label for="walletName">Name:</label>
+
+      </div>
+      <div class="col-75">
+        <input type="text" [(ngModel)]="wallet.walletUserName" #nameRef="ngModel" name="walletName" id="walletName"
+               pattern="[A-Za-z ]{3,}" title="Only chars are allowed,Min 3 char required" required>
+        <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
+          <p *ngIf="nameRef.errors?.['required']" class="text-danger">Name is required, cant be blank.</p>
+          <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Name must have at least 3 chars, only chars are
+            allowed.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-25">
+        <label for="balance">Salary:</label>
+      </div>
+
+      <div class="col-75">
+        <input type="number" [(ngModel)]="wallet.balance" #balanceRef="ngModel" name="balance" id="balance" min=0
+               required>
+
+        <div *ngIf="balanceRef.invalid && (balanceRef.touched || balanceRef.dirty)">
+          <p *ngIf="balanceRef.errors?.['required']" class="text-danger">Salary is required, cant be blank.</p>
+          <p *ngIf="balanceRef.errors?.['min']" class="text-danger">Salary must be positive.</p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="walletEmail">Email:</label>
+      </div>
+      <input type="email" [(ngModel)]="wallet.walletEmail" #emailRef="ngModel" name="walletEmail" id="walletEmail"
+             email = "true" title="enter primary email id" required>
+      <div *ngIf="emailRef.invalid && (emailRef.touched || emailRef.dirty)">
+        <p *ngIf="emailRef.errors?.['required']" class="text-danger">Email is required, cant be blank.</p>
+        <p *ngIf="emailRef.errors?.['email']" class="text-danger">Enter valid email</p>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="walletPassword">Set Password:</label>
+
+      </div>
+      <div class="col-75">
+        <input type="password" [(ngModel)]="wallet.password" #passwordRef="ngModel" name="walletPassword" id="walletPassword"
+               pattern="[A-Za-z ]{3,}" title="Only chars are allowed,Min 3 char required" required>
+        <div *ngIf="passwordRef.invalid && (passwordRef.touched || passwordRef.dirty)">
+          <p *ngIf="passwordRef.errors?.['required']" class="text-danger">Password is required, cant be blank.</p>
+          <p *ngIf="passwordRef.errors?.['pattern']" class="text-danger">Password must have at least 3 chars, only chars are
+            allowed.</p>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <input type="submit" (click)="onSubmit()" [disabled]="!userForm.valid" value="Submit">
+    </div>
+  </form>
+</div>
