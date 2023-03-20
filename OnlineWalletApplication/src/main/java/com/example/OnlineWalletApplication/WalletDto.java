@@ -13,7 +13,45 @@ import javax.validation.constraints.Pattern;
 @PropertySource("classpath:application.properties")
 @Entity
 public class WalletDto {
+    public Integer getWalletId() {
+        return walletId;
+    }
 
+    public void setWalletId(Integer walletId) {
+        this.walletId = walletId;
+    }
+
+    public String getWalletUserName() {
+        return walletUserName;
+    }
+
+    public void setWalletUserName(String walletUserName) {
+        this.walletUserName = walletUserName;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public String getWalletEmail() {
+        return walletEmail;
+    }
+
+    public void setWalletEmail(String walletEmail) {
+        this.walletEmail = walletEmail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @NotNull(message = "id should not be null")
     @Id
@@ -44,22 +82,6 @@ public class WalletDto {
 
     public WalletDto() {
 
-    }
-
-    public Integer getWalletId() {
-        return walletId;
-    }
-
-    public String getWalletUserName() {
-        return walletUserName;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
     }
 
 

@@ -43,7 +43,7 @@ public class WalletServiceImpl implements WalletService{
     public WalletDto deleteWalletById(Integer walletId) throws WalletException {
         Optional<WalletDto> walletOptional = getWalletDto(walletId);
         WalletDto deleteWallet = walletOptional.get();
-        this.walletRepository.deleteWallet(walletId);
+        this.walletRepository.delete(deleteWallet);
         return deleteWallet;
     }
 

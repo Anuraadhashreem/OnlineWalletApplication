@@ -28,6 +28,7 @@ export class WalletserviceService {
 
   updateWallet(wallet:Wallet):Observable<any>{
     return this.httpClient.put("http://localhost:8010/updateWallet",wallet);
+    console.log("no isuues here");
   }
 
 }

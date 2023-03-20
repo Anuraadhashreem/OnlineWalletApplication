@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200/")
 public class WalletController {
 
     @Autowired
@@ -29,15 +30,15 @@ public class WalletController {
 
     }
 
-    @PutMapping("/getWalletById")
-    public WalletDto getWallet(Integer walletIdToBereturned) throws WalletException
+    @GetMapping("/getWalletById/{walletIdToBereturned}")
+    public WalletDto getWallet(@PathVariable Integer walletIdToBereturned) throws WalletException
     {
         return walletService.getWalletById(walletIdToBereturned);
     }
 
     @PutMapping("/updateWallet")
     @ResponseStatus(value = HttpStatus.ACCEPTED)
-    public WalletDto updateWallet(WalletDto wallet) throws WalletException
+    public WalletDto updateWallet(@Valid @RequestBody WalletDto wallet) throws WalletException
     {
          return walletService.updateWallet(wallet);
     }
@@ -62,8 +63,8 @@ public class WalletController {
     }
 //
 //
-    @DeleteMapping("/removeWallet")
-    public WalletDto removeWallet(Integer walletId) throws WalletException
+    @DeleteMapping("/removeWallet/{walletId}")
+    public WalletDto removeWallet(@PathVariable Integer walletId) throws WalletException
     {
         return walletService.deleteWalletById(walletId);
     }

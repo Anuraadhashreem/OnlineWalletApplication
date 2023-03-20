@@ -1,7 +1,21 @@
 <div class="container">
   <h1>
-    <p> Update Wallet:</p>
+    <p style="text-align: center"> Update Wallet:</p>
   </h1>
+  <style>
+    input{
+      text-align: center;
+      align-items: center;
+    }
+
+    #form{
+      position:fixed;
+      top:50%;
+      left:50%;
+      width:250px;
+    }
+  </style>
+
   <form #userForm="ngForm">
 <!--    <div class="row">-->
 <!--      <div class="col-25">-->
@@ -78,11 +92,9 @@
       </div>
       <div class="col-75">
         <input type="password" [(ngModel)]="wallet.password" #passwordRef="ngModel" name="walletPassword" id="walletPassword"
-               pattern="[A-Za-z ]{3,}" title="Only chars are allowed,Min 3 char required" required>
+                title="Only chars are allowed,Min 3 char required" required>
         <div *ngIf="passwordRef.invalid && (passwordRef.touched || passwordRef.dirty)">
           <p *ngIf="passwordRef.errors?.['required']" class="text-danger">Password is required, cant be blank.</p>
-          <p *ngIf="passwordRef.errors?.['pattern']" class="text-danger">Password must have at least 3 chars, only chars are
-            allowed.</p>
         </div>
       </div>
 

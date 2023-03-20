@@ -15,10 +15,7 @@ public interface WalletRepository extends JpaRepository<WalletDto,Integer> {
             nativeQuery = true)
     List<WalletDto> getAllWallets();
 
-    @Query(
-            value = "DELETE wallet FROM WALLET_DTO wallet WHERE wallet.walletId=:walletId",
-            nativeQuery = true)
-    WalletDto deleteWallet(Integer walletId);
+
 
 }
 
